@@ -129,8 +129,12 @@ main {
   padding: 3vh;
 }
 .article {
-  height: 15vh;
+  height: 8em;
   padding: 1em;
+}
+footer {
+  margin-top: 2em;
+  padding: 4em;
 }
 #footerDescription {
   display: none;

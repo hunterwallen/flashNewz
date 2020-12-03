@@ -11,7 +11,7 @@ const apiCall = (num) => {
       console.log(data);
       let $thisTopicDiv = $('.topicDiv').eq(num)
       let $thisArticleContainer = $thisTopicDiv.children('.articleContainer')
-      for (var x = 0; x < 15; x++) {
+      for (var x = 0; x < 10; x++) {
         let $thisArticle = $thisArticleContainer.children('.article').eq(x)
         $thisArticle.children('.articleTitle').text(data.results[x].title)
         $thisArticle.children('.articleDescription').text(data.results[x].abstract)
@@ -30,7 +30,7 @@ const makeTopicContentTags = () => {
     let $thisTopicDiv = $('.topicDiv').eq(i)
     let $thisTopicContainer = $('<div>').addClass('articleContainer')
     $thisTopicDiv.append($thisTopicContainer)
-    for(let j = 0; j < 15; j++) {
+    for(let j = 0; j < 10; j++) {
       let $newArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle'), $('<h4>').addClass('articleDescription'))
       $thisTopicContainer.append($newArticle)
     }
