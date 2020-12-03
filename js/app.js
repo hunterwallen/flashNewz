@@ -11,7 +11,7 @@ $.ajax({
 }).then(
   (data) => {
     console.log(data.results[0].abstract);
-    $('p').html(data.results[0].url)
+
   },
   () => {
     console.log('error');
