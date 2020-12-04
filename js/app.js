@@ -40,28 +40,45 @@ const makeTopicContentTags = () => {
     apiCall(i)
   }
   $('.subjects').on('click', topicSelect)
+  $('#nextButton').on('click', nextBtn)
+  $('#lastButton').on('click', lastBtn)
 }
 
+
+//function to use next nextButton
+const nextBtn = () => {
+  let $newCenter = $('.topicDiv').index($('.next'))
+  setDivClasses($newCenter)
+}
+//function to use last lastButton
+const lastBtn = () => {
+  let $newCenter = $('.topicDiv').index($('.last'))
+  setDivClasses($newCenter)
+}
 //function to change last center and next classes with topic change click in nav bar
 const topicSelect = (event) => {
-  console.log($('.topicDiv center'))
+  let $clickedIndex = $('.subjects').index(event.currentTarget)
+  console.log($clickedIndex);
+  setDivClasses($clickedIndex)
+}
+//function to set center next and last classes
+const setDivClasses = (newCenterIndex) => {
   $('.center').removeClass('center')
   $('.next').removeClass('next')
   $('.last').removeClass('last')
-  let $clickedIndex = $('#subjectNav').children().index(event.currentTarget)
-  let $newCenter = $('.carouselContainer').children('.topicDiv').eq($clickedIndex)
-  if ($clickedIndex > 0 && $clickedIndex < 7) {
-    let $newNext = $('.carouselContainer').children('.topicDiv').eq($clickedIndex + 1)
+  let $newCenter = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex)
+  if (newCenterIndex > 0 && newCenterIndex < 7) {
+    let $newNext = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex + 1)
     console.log($newNext);
-    let $newLast = $('.carouselContainer').children('.topicDiv').eq($clickedIndex - 1)
+    let $newLast = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex - 1)
     $newNext.addClass('next')
     $newLast.addClass('last')
-  } else if ($clickedIndex === 0) {
+  } else if (newCenterIndex === 0) {
     let $newNext = $('.carouselContainer').children('.topicDiv').eq(1)
     let $newLast = $('.carouselContainer').children('.topicDiv').eq(7)
     $newNext.addClass('next')
     $newLast.addClass('last')
-  } else if ($clickedIndex === 7) {
+  } else if (newCenterIndex === 7) {
     let $newNext = $('.carouselContainer').children('.topicDiv').eq(0)
     let $newLast = $('.carouselContainer').children('.topicDiv').eq(6)
     $newNext.addClass('next')
@@ -69,7 +86,6 @@ const topicSelect = (event) => {
   }
   $newCenter.addClass('center')
 }
-
 
 
 $(() => {

@@ -109,7 +109,7 @@ main {
   flex: 0 0 auto;
   background-color: white;
   width: 60%;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   visibility: hidden;
