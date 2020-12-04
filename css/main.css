@@ -71,19 +71,20 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: center;
+  width: 95vw;
 }
 #lastTopic {
   z-index: 9999;
   position: fixed;
-  margin-top: 30%;
-  margin-left: 5%;
+  margin-top: 20%;
+  margin-right: 80%;
 }
 #nextTopic {
   z-index: 9999;
   position: fixed;
-  margin-top: 30%;
-  margin-left: 85%;
+  margin-top: 20%;
+  margin-left: 80%;
 }
 .topicBtn {
   height: 2em;
@@ -103,7 +104,7 @@ main {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: baseline;
-  width: 95vw;
+  width: 50vw;
 }
 .topicDiv {
   flex: 0 0 auto;
@@ -125,6 +126,7 @@ main {
   overflow-y: auto;
   opacity: 100%;
   filter: drop-shadow(.5em .5em 5px black);
+  transition-duration: .7s;
 }
 .topicDiv.next {
   display: flex;
@@ -136,7 +138,8 @@ main {
   transform:
     scale(.95)
     translate(60vw, 0);
-  transition-duration: 2s;
+  transition-duration: .7s;
+  pointer-events: none;
 }
 .topicDiv.last {
   display: flex;
@@ -148,7 +151,34 @@ main {
   transform:
     scale(.95)
     translate(-60vw, 0);
-  transition-duration: 2s;
+  transition-duration: .7s;
+  pointer-events: none;
+}
+.topicDiv.middleNext {
+  display: flex;
+  visibility: visible;
+  filter:
+    blur(2px)
+    brightness(90%)
+    drop-shadow(.2em .2em 5px black);
+  transform:
+    scale(.95)
+    translate(25vw, 0);
+  transition-duration: .7s;
+  pointer-events: none;
+}
+.topicDiv.middleLast {
+  display: flex;
+  visibility: visible;
+  filter:
+    blur(2px)
+    brightness(90%)
+    drop-shadow(.2em .2em 5px black);
+  transform:
+    scale(.95)
+    translate(-25vw, 0);
+  transition-duration: .7s;
+  pointer-events: none;
 }
 .topicDiv h1 {
   text-align: center;
@@ -157,10 +187,10 @@ main {
   padding: 3vh;
 }
 .article {
-  height: 8em;
+  height: 10em;
   padding: 1em;
 }
-.article:hover {
+.center.articleLink:hover {
   cursor: pointer;
   background-color: lightgrey;
 }

@@ -66,13 +66,16 @@ const setDivClasses = (newCenterIndex) => {
   $('.center').removeClass('center')
   $('.next').removeClass('next')
   $('.last').removeClass('last')
+  $('.middleNext').removeClass('middleNext')
+  $('.middleLast').removeClass('middleLast')
   let $newCenter = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex)
+  $newCenter.addClass('center')
   if (newCenterIndex > 0 && newCenterIndex < 7) {
     let $newNext = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex + 1)
     console.log($newNext);
     let $newLast = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex - 1)
-    $newNext.addClass('next')
-    $newLast.addClass('last')
+    $newNext.addClass('next').addClass('middleNext')
+    $newLast.addClass('last').addClass('middleLast')
   } else if (newCenterIndex === 0) {
     let $newNext = $('.carouselContainer').children('.topicDiv').eq(1)
     let $newLast = $('.carouselContainer').children('.topicDiv').eq(7)
@@ -84,7 +87,6 @@ const setDivClasses = (newCenterIndex) => {
     $newNext.addClass('next')
     $newLast.addClass('last')
   }
-  $newCenter.addClass('center')
 }
 
 
