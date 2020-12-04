@@ -133,7 +133,7 @@ main {
   display: flex;
   visibility: visible;
   filter:
-    blur(2px)
+    blur(3px)
     brightness(90%)
     drop-shadow(.2em .2em 5px black);
   transform:
@@ -146,7 +146,7 @@ main {
   display: flex;
   visibility: visible;
   filter:
-    blur(2px)
+    blur(3px)
     brightness(90%)
     drop-shadow(.2em .2em 5px black);
   transform:
@@ -159,7 +159,7 @@ main {
   display: flex;
   visibility: visible;
   filter:
-    blur(2px)
+    blur(3px)
     brightness(90%)
     drop-shadow(.2em .2em 5px black);
   transform:
@@ -172,7 +172,7 @@ main {
   display: flex;
   visibility: visible;
   filter:
-    blur(2px)
+    blur(3px)
     brightness(90%)
     drop-shadow(.2em .2em 5px black);
   transform:
@@ -188,10 +188,19 @@ main {
   padding: 3vh;
 }
 .article {
-  height: 10em;
+  height: 11em;
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px dashed black;
 }
-.center.articleLink:hover {
+a.articleLink {
+  text-decoration: none;
+  color: black;
+  align-self: center;
+}
+a.articleLink:hover {
   cursor: pointer;
   background-color: lightgrey;
 }
