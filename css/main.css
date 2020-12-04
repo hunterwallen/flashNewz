@@ -26,9 +26,6 @@ h2.satiricalDescription {
   margin-bottom: 1em;
   display: flex;
   flex-direction: column;
-  border: none;
-  outline: none;
-  outline-offset: -4px;
   filter: drop-shadow(.2em .2em 3px black);
   z-index: 9999;
   position: sticky;
@@ -40,7 +37,7 @@ h2.satiricalDescription {
   width: calc(100%-4px);
   height: 100%;
   padding: 0;
-  margin: 1px;
+  margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -52,7 +49,7 @@ h2.satiricalDescription {
   background-color: whitesmoke;
   flex-shrink: none;
   width: 25%;
-  height: 5em;
+  height: 2em;
   text-align: center;
   display: flex;
   justify-content: space-around;
@@ -61,7 +58,6 @@ h2.satiricalDescription {
 }
 #subjectNav li:hover {
   background-color: lightgrey;
-  cursor: pointer;
 }
 .subjects.active {
   background-color: darkgrey;
@@ -81,21 +77,6 @@ main {
 }
 #nextTopic {
   display: none
-}
-.topicBtn {
-  height: 2em;
-  width: 1em;
-  font-size: 4em;
-  background-color: rgba(200, 200, 200, .5);
-  border: 2px solid lightgrey;
-  border-radius: 10px;
-  filter: drop-shadow(2px 2px 1px black);
-  color: lightgrey;
-}
-.topicBtn:hover {
-  cursor: pointer;
-  background-color: rgba(200, 200, 200, .8);
-  color: black;
 }
 .carouselContainer {
   display: flex;
@@ -149,18 +130,17 @@ a.articleLink {
   border-radius: 10px;
 }
 a.articleLink:hover {
-  cursor: pointer;
   background-color: lightgrey;
   color: black;
 }
 footer {
-  margin-top: 2em;
-  padding-top: 1em;
+  margin-top: .5em;
+  padding-top: .5em;
 }
 #footerDescription {
   display: block;
   text-align: center;
-  padding-bottom: 3em;
+  padding-bottom: 1em;
   line-height: 2em;
 }
 #footerNav {
@@ -186,249 +166,168 @@ footer {
 
 @media (min-width: 880px) {
 
-body {
-  background-color: darkgrey;
-  overflow-x: hidden;
-}
-header {
-  outline: 1px solid black;
-  outline-offset: -3px;
-  outline-style: double;
-  border: 1px solid black;
-  width: 80vw;
-  filter: drop-shadow(.25em .25em 2px black);
-  margin-top: 1em;
-}
-#headerToolTip {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  background: white;
-  opacity: .9;
-  top: 0;
-  left: 0;
-  width: 15vw;
-  height: auto;
-  padding: 1em;
-  border-radius: 10px;
-}
-h2.satiricalDescription {
-  margin: 0;
-  font-size: 1em;
-}
-#topNav {
-  width: 80vw;
-  background-color: grey;
-  margin: 1em;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  outline: 1px solid black;
-  outline-offset: -4px;
-  filter: drop-shadow(.2em .2em 3px black);
-  z-index: 0;
-}
-#subjectNav {
-  list-style: none;
-  border: none;
-  background-color: whitesmoke;
-  width: calc(100% - 4px);
-  height: 100%;
-  padding: 0;
-  margin: 1px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-#subjectNav li {
-  width:15%;
-  height: 5em;
-  text-align: center;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  outline: 1px solid black;
-}
-#subjectNav li:hover {
-  background-color: lightgrey;
-  cursor: pointer;
-}
-.subjects.active {
-  background-color: darkgrey;
-  color: white;
-}
-main {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  width: 100vw;
-  overflow-x: hidden;
-}
-#lastTopic {
-  display: block;
-  z-index: 9999;
-  position: fixed;
-  margin-top: 20%;
-  margin-right: 80%;
-}
-#nextTopic {
-  display: block;
-  z-index: 999;
-  position: fixed;
-  margin-top: 20%;
-  margin-left: 80%;
-}
-.topicBtn {
-  height: 2em;
-  width: 1em;
-  font-size: 4em;
-  background-color: rgba(200, 200, 200, .5);
-  border: 2px solid lightgrey;
-  border-radius: 10px;
-  filter: drop-shadow(2px 2px 1px black);
-  color: lightgrey;
-}
-.topicBtn:hover {
-  cursor: pointer;
-  background-color: rgba(200, 200, 200, .8);
-  color: black;
-}
-.carouselContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: baseline;
-  width: 50vw;
-}
-.topicDiv {
-  flex: 0 0 auto;
-  background-color: white;
-  width: 60%;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  visibility: hidden;
-  overflow-y: hidden;
-  border: 3px solid black;
-  border-radius: 15px;
-}
-.topicDiv.center {
-  display: flex;
-  visibility: visible;
-  position: absolute;
-  z-index: 9999;
-  overflow-y: auto;
-  opacity: 100%;
-  filter: drop-shadow(.5em .5em 5px black);
-  transition-duration: .7s;
-}
-.topicDiv.next {
-  display: flex;
-  visibility: visible;
-  filter:
-    blur(3px)
-    brightness(90%)
-    drop-shadow(.2em .2em 5px black);
-  transform:
-    scale(.95)
-    translate(60vw, 0);
-  transition-duration: .7s;
-  pointer-events: none;
-}
-.topicDiv.last {
-  display: flex;
-  visibility: visible;
-  filter:
-    blur(3px)
-    brightness(90%)
-    drop-shadow(.2em .2em 5px black);
-  transform:
-    scale(.95)
-    translate(-60vw, 0);
-  transition-duration: .7s;
-  pointer-events: none;
-}
-.topicDiv.middleNext {
-  display: flex;
-  visibility: visible;
-  filter:
-    blur(3px)
-    brightness(90%)
-    drop-shadow(.2em .2em 5px black);
-  transform:
-    scale(.95)
-    translate(25vw, 0);
-  transition-duration: .7s;
-  pointer-events: none;
-}
-.topicDiv.middleLast {
-  display: flex;
-  visibility: visible;
-  filter:
-    blur(3px)
-    brightness(90%)
-    drop-shadow(.2em .2em 5px black);
-  transform:
-    scale(.95)
-    translate(-25vw, 0);
-  transition-duration: .7s;
-  pointer-events: none;
-}
-.topicDiv h1 {
-  text-align: center;
-  background-color: whitesmoke;
-  margin: 0;
-  padding: 3vh;
-}
-.article {
-  padding: 1em;
-  height: 14em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  border: 1px dashed black;
-}
-a.articleLink {
-  text-decoration: none;
-  color: lightgrey;
-  align-self: center;
-  padding: 1em;
-  border: 2px solid lightgrey;
-  border-radius: 10px;
-}
-a.articleLink:hover {
-  cursor: pointer;
-  background-color: lightgrey;
-  color: black;
-}
-footer {
-  margin-top: 2em;
-  padding-top: 4em;
-}
-#footerDescription {
-  display: none;
-}
-#footerNav {
-  display: flex;
-  width: 100vw;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
-}
-#footerNav a {
-  text-align: center;
-  text-decoration: none;
-  color: white;
-  padding: 2em;
-  width: 15%;
-  border-left: 2px dashed grey;
-}
-#footerNav a:first-child {
-  border-left: none;
-}
+  body {
+    background-color: darkgrey;
+    overflow-x: hidden;
+  }
+  header {
+    outline: 1px solid black;
+    outline-offset: -3px;
+    outline-style: double;
+    border: 1px solid black;
+    width: 80vw;
+    filter: drop-shadow(.25em .25em 2px black);
+    margin-top: 1em;
+  }
+  #headerToolTip {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: white;
+    opacity: .9;
+    top: 0;
+    left: 0;
+    width: 15vw;
+    height: auto;
+    padding: 1em;
+    border-radius: 10px;
+  }
+  h2.satiricalDescription {
+    margin: 0;
+    font-size: 1em;
+  }
+  #topNav {
+    width: 80vw;
+    margin: 1em;
+    border: 2px solid black;
+    outline: 1px solid black;
+    outline-offset: -4px;
+    filter: drop-shadow(.2em .2em 3px black);
+    z-index: 0;
+  }
+  #subjectNav {
+    border: none;
+    background-color: whitesmoke;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+  }
+  #subjectNav li {
+    width:15%;
+    height: 5em;
+    outline: 1px solid black;
+  }
+  #subjectNav li:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+  }
+  #lastTopic {
+    display: block;
+    z-index: 9999;
+    position: fixed;
+    margin-top: 20%;
+    margin-right: 80%;
+  }
+  #nextTopic {
+    display: block;
+    z-index: 999;
+    position: fixed;
+    margin-top: 20%;
+    margin-left: 80%;
+  }
+  .topicBtn {
+    height: 2em;
+    width: 1em;
+    font-size: 4em;
+    background-color: rgba(200, 200, 200, .5);
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    filter: drop-shadow(2px 2px 1px black);
+    color: lightgrey;
+  }
+  .topicBtn:hover {
+    cursor: pointer;
+    background-color: rgba(200, 200, 200, .8);
+    color: black;
+  }
+  .topicDiv {
+    width: 60%;
+  }
+  .topicDiv.center {
+    position: absolute;
+    z-index: 9999;
+  }
+  .topicDiv.next {
+    display: flex;
+    visibility: visible;
+    filter:
+      blur(3px)
+      brightness(90%)
+      drop-shadow(.2em .2em 5px black);
+    transform:
+      scale(.95)
+      translate(60vw, 0);
+    transition-duration: .7s;
+    pointer-events: none;
+  }
+  .topicDiv.last {
+    display: flex;
+    visibility: visible;
+    filter:
+      blur(3px)
+      brightness(90%)
+      drop-shadow(.2em .2em 5px black);
+    transform:
+      scale(.95)
+      translate(-60vw, 0);
+    transition-duration: .7s;
+    pointer-events: none;
+  }
+  .topicDiv.middleNext {
+    display: flex;
+    visibility: visible;
+    filter:
+      blur(3px)
+      brightness(90%)
+      drop-shadow(.2em .2em 5px black);
+    transform:
+      scale(.95)
+      translate(25vw, 0);
+    transition-duration: .7s;
+    pointer-events: none;
+  }
+  .topicDiv.middleLast {
+    display: flex;
+    visibility: visible;
+    filter:
+      blur(3px)
+      brightness(90%)
+      drop-shadow(.2em .2em 5px black);
+    transform:
+      scale(.95)
+      translate(-25vw, 0);
+    transition-duration: .7s;
+    pointer-events: none;
+  }
+  .article {
+    height: 14em;
+  }
+  a.articleLink:hover {
+    cursor: pointer;
+  }
+  footer {
+    margin-top: 2em;
+    padding-top: 4em;
+  }
+  #footerDescription {
+    display: none;
+  }
+  #footerNav {
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
 
 }
