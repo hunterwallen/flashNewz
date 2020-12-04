@@ -11,9 +11,10 @@ body {
   flex-direction: column;
   align-items: center;
   overflow: none;
+  background-color: darkgrey;
 }
 header {
-  background-color: lightgrey;
+  background-color: white;
   outline: 1px solid black;
   outline-offset: -3px;
   outline-style: double;
