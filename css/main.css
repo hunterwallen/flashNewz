@@ -204,6 +204,7 @@ footer {
     outline-offset: -4px;
     filter: drop-shadow(.2em .2em 3px black);
     z-index: 0;
+    position: relative;
   }
   #subjectNav {
     border: none;
