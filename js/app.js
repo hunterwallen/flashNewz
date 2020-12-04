@@ -47,12 +47,16 @@ const makeTopicContentTags = () => {
 
 //function to use next nextButton
 const nextBtn = () => {
+  $('.active').removeClass('active')
   let $newCenter = $('.topicDiv').index($('.next'))
+  $('.subjects').eq($newCenter).addClass('active')
   setDivClasses($newCenter)
 }
 //function to use last lastButton
 const lastBtn = () => {
+  $('.active').removeClass('active')
   let $newCenter = $('.topicDiv').index($('.last'))
+  $('.subjects').eq($newCenter).addClass('active')
   setDivClasses($newCenter)
 }
 //function to change last center and next classes with topic change click in nav bar
@@ -63,11 +67,13 @@ const topicSelect = (event) => {
 }
 //function to set center next and last classes
 const setDivClasses = (newCenterIndex) => {
+  $('.active').removeClass('active')
   $('.center').removeClass('center')
   $('.next').removeClass('next')
   $('.last').removeClass('last')
   $('.middleNext').removeClass('middleNext')
   $('.middleLast').removeClass('middleLast')
+  $('.subjects').eq(newCenterIndex).addClass('active')
   let $newCenter = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex)
   $newCenter.addClass('center')
   if (newCenterIndex > 0 && newCenterIndex < 7) {
@@ -88,7 +94,11 @@ const setDivClasses = (newCenterIndex) => {
     $newLast.addClass('last')
   }
 }
+//function to change background color of center div in nav bar
+ //function to make headerToolTip appear on hover on desktop and follow mouse cursor
+ const headerToolTip = () => {
 
+ }
 
 $(() => {
 

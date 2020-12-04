@@ -64,8 +64,9 @@ header {
   background-color: lightgrey;
   cursor: pointer;
 }
-#subjectNav li: {
-
+.subjects.active {
+  background-color: darkgrey;
+  color: white;
 }
 main {
   display: flex;
