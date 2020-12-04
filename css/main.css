@@ -1,29 +1,203 @@
-/* * {
-  border: 1px solid lightgrey;
-} */
-html {
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-}
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: none;
   background-color: darkgrey;
+  margin-top: 0;
 }
 header {
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100vw - 4px);
+  border: 2px solid grey;
+}
+#headerToolTip {
+  z-index: -9999;
+}
+h2.satiricalDescription {
+  margin: 0;
+  font-size: 1em;
+}
+#topNav {
+  width: 100vw;
+  background-color: grey;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  outline: none;
+  outline-offset: -4px;
+  filter: drop-shadow(.2em .2em 3px black);
+  z-index: 9999;
+  position: sticky;
+  top: 0;
+}
+#subjectNav {
+  list-style: none;
+  background-color: gray;
+  width: calc(100%-4px);
+  height: 100%;
+  padding: 0;
+  margin: 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 2px solid grey;
+}
+#subjectNav li {
+  background-color: whitesmoke;
+  flex-shrink: none;
+  width: 25%;
+  height: 5em;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  outline: 2px solid grey;
+}
+#subjectNav li:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
+.subjects.active {
+  background-color: darkgrey;
+  color: white;
+}
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+}
+#lastTopic {
+  display: none;
+}
+#nextTopic {
+  display: none
+}
+.topicBtn {
+  height: 2em;
+  width: 1em;
+  font-size: 4em;
+  background-color: rgba(200, 200, 200, .5);
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+  filter: drop-shadow(2px 2px 1px black);
+  color: lightgrey;
+}
+.topicBtn:hover {
+  cursor: pointer;
+  background-color: rgba(200, 200, 200, .8);
+  color: black;
+}
+.carouselContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  width: 50vw;
+}
+.topicDiv {
+  flex: 0 0 auto;
+  background-color: white;
+  width: 90vw;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  visibility: hidden;
+  overflow-y: hidden;
+  border: 3px solid black;
+  border-radius: 15px;
+}
+.topicDiv.center {
+  display: flex;
+  visibility: visible;
+  position: relative;
+  overflow-y: auto;
+  opacity: 100%;
+  filter: drop-shadow(.5em .5em 5px black);
+  transition-duration: .7s;
+}
+.topicDiv h1 {
+  text-align: center;
+  background-color: whitesmoke;
+  margin: 0;
+  padding: 3vh;
+}
+.article {
+  padding: 1em;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px dashed black;
+}
+a.articleLink {
+  text-decoration: none;
+  color: lightgrey;
+  align-self: center;
+  padding: 1em;
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+}
+a.articleLink:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+  color: black;
+}
+footer {
+  margin-top: 2em;
+  padding-top: 1em;
+}
+#footerDescription {
+  display: block;
+  text-align: center;
+  padding-bottom: 3em;
+  line-height: 2em;
+}
+#footerNav {
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+#footerNav a {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  padding: 2em;
+  width: 15%;
+  border-left: 2px dashed grey;
+}
+#footerNav a:first-child {
+  border-left: none;
+}
+
+
+
+@media (min-width: 880px) {
+
+body {
+  background-color: darkgrey;
+  overflow-x: hidden;
+}
+header {
   outline: 1px solid black;
   outline-offset: -3px;
   outline-style: double;
   border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 80vw;
   filter: drop-shadow(.25em .25em 2px black);
+  margin-top: 1em;
 }
 #headerToolTip {
   display: none;
@@ -56,6 +230,7 @@ h2.satiricalDescription {
 }
 #subjectNav {
   list-style: none;
+  border: none;
   background-color: whitesmoke;
   width: calc(100% - 4px);
   height: 100%;
@@ -89,15 +264,18 @@ main {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  width: 95vw;
+  width: 100vw;
+  overflow-x: hidden;
 }
 #lastTopic {
+  display: block;
   z-index: 9999;
   position: fixed;
   margin-top: 20%;
   margin-right: 80%;
 }
 #nextTopic {
+  display: block;
   z-index: 999;
   position: fixed;
   margin-top: 20%;
@@ -251,4 +429,6 @@ footer {
 }
 #footerNav a:first-child {
   border-left: none;
+}
+
 }

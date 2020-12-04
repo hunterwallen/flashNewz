@@ -105,10 +105,10 @@ const setDivClasses = (newCenterIndex) => {
    $toolTip.css('top', event.pageY - 30 + 'px')
  }
  const showSatire = () => {
-   $('#headerToolTip').css('display', 'block')
+   $('#headerToolTip').css('display', 'block').css('z-index', '9999')
  }
  const hideSatire = () => {
-   $('#headerToolTip').css('display', 'none')
+   $('#headerToolTip').css('display', 'none').css('z-index', '-9999')
  }
 
 $(() => {
