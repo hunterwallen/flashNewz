@@ -15,6 +15,7 @@ const apiCall = (num) => {
         let $thisArticle = $thisArticleContainer.children('.article').eq(x)
         $thisArticle.children('.articleTitle').text(data.results[x].title)
         $thisArticle.children('.articleDescription').text(data.results[x].abstract)
+        $thisArticle.children('.articleLink').attr('href', data.results[x].url)
         console.log(data.results[x].abstract);
       }
     },
@@ -31,7 +32,8 @@ const makeTopicContentTags = () => {
     let $thisTopicContainer = $('<div>').addClass('articleContainer')
     $thisTopicDiv.append($thisTopicContainer)
     for(let j = 0; j < 10; j++) {
-      let $newArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle'), $('<h4>').addClass('articleDescription'))
+      let $newLink = $('<a>').addClass('articleLink').attr('target', '_blank').text('READ THE FULL ARTICLE HERE')
+      let $newArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle'), $('<h4>').addClass('articleDescription'), $newLink)
       $thisTopicContainer.append($newArticle)
     }
     apiCall(i)
