@@ -108,12 +108,15 @@ main {
   width: 1em;
   font-size: 4em;
   background-color: rgba(200, 200, 200, .5);
+  border: 2px solid lightgrey;
   border-radius: 10px;
   filter: drop-shadow(2px 2px 1px black);
+  color: lightgrey;
 }
 .topicBtn:hover {
   cursor: pointer;
   background-color: rgba(200, 200, 200, .8);
+  color: black;
 }
 .carouselContainer {
   display: flex;
@@ -204,8 +207,8 @@ main {
   padding: 3vh;
 }
 .article {
-  height: 11em;
   padding: 1em;
+  height: 14em;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -213,17 +216,39 @@ main {
 }
 a.articleLink {
   text-decoration: none;
-  color: black;
+  color: lightgrey;
   align-self: center;
+  padding: 1em;
+  border: 2px solid lightgrey;
+  border-radius: 10px;
 }
 a.articleLink:hover {
   cursor: pointer;
   background-color: lightgrey;
+  color: black;
 }
 footer {
   margin-top: 2em;
-  padding: 4em;
+  padding-top: 4em;
 }
 #footerDescription {
   display: none;
+}
+#footerNav {
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+#footerNav a {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  padding: 2em;
+  width: 15%;
+  border-left: 2px dashed grey;
+}
+#footerNav a:first-child {
+  border-left: none;
 }
