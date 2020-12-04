@@ -42,6 +42,8 @@ const makeTopicContentTags = () => {
   $('.subjects').on('click', topicSelect)
   $('#nextButton').on('click', nextBtn)
   $('#lastButton').on('click', lastBtn)
+  $('header').hover(showSatire, hideSatire)
+  $('header').mousemove(moveSatire)
 }
 
 
@@ -96,8 +98,17 @@ const setDivClasses = (newCenterIndex) => {
 }
 //function to change background color of center div in nav bar
  //function to make headerToolTip appear on hover on desktop and follow mouse cursor
- const headerToolTip = () => {
-
+ const moveSatire = (event) => {
+   let $toolTip = $('#headerToolTip')
+   console.log(event.pageX);
+   $toolTip.css('left', event.pageX - 90 + 'px')
+   $toolTip.css('top', event.pageY - 30 + 'px')
+ }
+ const showSatire = () => {
+   $('#headerToolTip').css('display', 'block')
+ }
+ const hideSatire = () => {
+   $('#headerToolTip').css('display', 'none')
  }
 
 $(() => {
