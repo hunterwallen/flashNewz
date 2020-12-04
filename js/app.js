@@ -2,6 +2,8 @@
 const topicDivs = ['home', 'politics', 'us', 'world', 'business', 'technology', 'health', 'science']
 
 // function to return ajax call for topic of index of topicDiv array
+//function to populate headlines to all topics inside h3 of at each articleContainer index
+// function to populate abstracts to all topic h4
 const apiCall = (num) => {
   let thisTopic = topicDivs[num]
   $.ajax({
@@ -24,8 +26,7 @@ const apiCall = (num) => {
     }
   )
 }
-
-// function to create articleContainer div and 15 article divs each with a h3 and h4 in each topicDiv
+// function to create articleContainer div and 15 article divs each with a h3 h4 and a tag in each topicDiv
 const makeTopicContentTags = () => {
   for (let i = 0; i < 8; i++) {
     let $thisTopicDiv = $('.topicDiv').eq(i)
@@ -38,18 +39,41 @@ const makeTopicContentTags = () => {
     }
     apiCall(i)
   }
+  $('.subjects').on('click', topicSelect)
 }
 
-//function to populate headlines to all topics inside h3 of at each articleContainer index
-  // declare jquery variable that gets all topDivs
-  // for loop
-
-// function to populate abstracts to all topic h4
-
+//function to change last center and next classes with topic change click in nav bar
+const topicSelect = (event) => {
+  console.log($('.topicDiv center'))
+  $('.center').removeClass('center')
+  $('.next').removeClass('next')
+  $('.last').removeClass('last')
+  let $clickedIndex = $('#subjectNav').children().index(event.currentTarget)
+  let $newCenter = $('.carouselContainer').children('.topicDiv').eq($clickedIndex)
+  if ($clickedIndex > 0 && $clickedIndex < 7) {
+    let $newNext = $('.carouselContainer').children('.topicDiv').eq($clickedIndex + 1)
+    console.log($newNext);
+    let $newLast = $('.carouselContainer').children('.topicDiv').eq($clickedIndex - 1)
+    $newNext.addClass('next')
+    $newLast.addClass('last')
+  } else if ($clickedIndex === 0) {
+    let $newNext = $('.carouselContainer').children('.topicDiv').eq(1)
+    let $newLast = $('.carouselContainer').children('.topicDiv').eq(7)
+    $newNext.addClass('next')
+    $newLast.addClass('last')
+  } else if ($clickedIndex === 7) {
+    let $newNext = $('.carouselContainer').children('.topicDiv').eq(0)
+    let $newLast = $('.carouselContainer').children('.topicDiv').eq(6)
+    $newNext.addClass('next')
+    $newLast.addClass('last')
+  }
+  $newCenter.addClass('center')
+}
 
 
 
 $(() => {
+
 
 makeTopicContentTags()
 
