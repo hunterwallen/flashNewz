@@ -123,13 +123,10 @@ const setDivClasses = (newCenterIndex) => {
 
 //build a swipe event listener for mobile
 const swipe = () => {
-  console.log('itfired');
   if(startTouch === endTouch) {
     if (startX + 80 < endX) {
-      console.log('swipe right');
       lastBtn()
     } else if (startX - 80 > endX) {
-      console.log('swipe left');
       nextBtn()
     }
   }
