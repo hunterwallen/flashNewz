@@ -352,7 +352,7 @@ footer p {
     pointer-events: none;
   }
   .article {
-    height: 15em;
+    min-height: 15em;
   }
   a.articleLink {
     background-color: inherit;
