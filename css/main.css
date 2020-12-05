@@ -197,6 +197,7 @@ footer {
 #footerNav a {
   text-align: center;
   text-decoration: none;
+  font-family: 'Bebas Neue', cursive;
   color: white;
   padding: 2em;
   width: 15%;
@@ -205,7 +206,12 @@ footer {
 #footerNav a:first-child {
   border-left: none;
 }
-
+footer p {
+  text-align: center;
+  margin: 4px;
+  color: whitesmoke;
+  font-family: 'Bebas Neue', cursive;
+}
 
 
 @media (min-width: 880px) {
@@ -370,6 +376,9 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
+  }
+  #footerNav a:hover {
+    background-color: grey;
   }
 
 
