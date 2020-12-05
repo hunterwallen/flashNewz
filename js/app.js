@@ -1,6 +1,9 @@
 // declare global array that contains the id's of each topicDiv
 const topicDivs = ['home', 'politics', 'us', 'world', 'business', 'technology', 'health', 'science']
-
+let startX = 0;
+let endX = 0;
+let startTouch = 0;
+let endTouch = 0
 // function to return ajax call for topic of index of topicDiv array
 //function to populate headlines to all topics inside h3 of at each articleContainer index
 // function to populate abstracts to all topic h4
@@ -42,8 +45,16 @@ const makeTopicContentTags = () => {
   $('#lastButton').on('click', lastBtn)
   $('header').hover(showSatire, hideSatire)
   $('header').mousemove(moveSatire)
-  $(window).on('swipe', () => {
-    console.log('itworked');
+  $('.topicDiv').on('touchstart', (event) => {
+    let date = new Date()
+    startTouch = Number(date.getSeconds())
+    startX = event.changedTouches[0].pageX
+  })
+  $('.topicDiv').on('touchend', (event) => {
+    let date = new Date()
+    endTouch = Number(date.getSeconds())
+    endX = event.changedTouches[0].pageX
+    swipe()
   })
 }
 
@@ -108,6 +119,25 @@ const setDivClasses = (newCenterIndex) => {
  const hideSatire = () => {
    $('#headerToolTip').css('display', 'none').css('z-index', '-9999')
  }
+
+
+//build a swipe event listener for mobile
+const swipe = () => {
+  console.log('itfired');
+  if(startTouch === endTouch) {
+    if (startX + 80 < endX) {
+      console.log('swipe right');
+      lastBtn()
+    } else if (startX - 80 > endX) {
+      console.log('swipe left');
+      nextBtn()
+    }
+  }
+}
+
+
+
+
 
 $(() => {
 
