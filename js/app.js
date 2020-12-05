@@ -101,8 +101,8 @@ const setDivClasses = (newCenterIndex) => {
  const moveSatire = (event) => {
    let $toolTip = $('#headerToolTip')
    console.log(event.pageX);
-   $toolTip.css('left', event.pageX - 90 + 'px')
-   $toolTip.css('top', event.pageY - 30 + 'px')
+   $toolTip.css('left', event.pageX - 10 + 'px')
+   $toolTip.css('top', event.pageY - 10 + 'px')
  }
  const showSatire = () => {
    $('#headerToolTip').css('display', 'block').css('z-index', '9999')
