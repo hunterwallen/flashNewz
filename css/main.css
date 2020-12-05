@@ -130,6 +130,8 @@ main {
 }
 .topicDiv h1 {
   text-align: center;
+  font-family: 'Playfair Display SC', serif;
+  font-weight: bold;
   background-color: #567485;
   color: whitesmoke;
   text-shadow: 1px 1px black;
@@ -355,6 +357,10 @@ footer p {
       translate(-25vw, 0);
     transition-duration: .7s;
     pointer-events: none;
+  }
+  .topicDiv h1 {
+    font-size: 3em;
+    letter-spacing: 3px;
   }
   .article {
     min-height: 15em;
