@@ -35,11 +35,24 @@ const makeTopicContentTags = () => {
     $thisTopicDiv.append($thisTopicContainer)
     for(let j = 0; j < 10; j++) {
       let $newLink = $('<a>').addClass('articleLink').attr('target', '_blank').text('FULL ARTICLE')
-      let $newArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle'), $('<h4>').addClass('articleDescription'), $newLink)
+      let $favoritesAdd = $('<a>').addClass('favLink').text('Add to Favorites')
+      let $linksFlex = $('<div>').addClass('linksFlex').append($newLink, $favoritesAdd)
+      let $newArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle'), $('<h4>').addClass('articleDescription'), $linksFlex)
       $thisTopicContainer.append($newArticle)
     }
     apiCall(i)
   }
+  let $favoritesDiv = $('#favorites')
+  let $thisFavoritesContainer = $('<div>').addClass('articleContainer')
+  $favoritesDiv.append($thisFavoritesContainer)
+  for(let x = 0; x < 10; x++) {
+    let $newLink = $('<a>').addClass('articleLink').attr('target', '_blank').text('FULL ARTICLE')
+    let $removeFav = $('<a>').addClass('removeFav').text('Remove from Favorites')
+    let $linksFlex = $('<div>').addClass('linksFlex').append($newLink, $removeFav)
+    let $newArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle'), $('<h4>').addClass('articleDescription'), $linksFlex)
+    $thisFavoritesContainer.append($newArticle)
+  }
+
   $('.subjects').on('click', topicSelect)
   $('#nextButton').on('click', nextBtn)
   $('#lastButton').on('click', lastBtn)
@@ -89,19 +102,19 @@ const setDivClasses = (newCenterIndex) => {
   $('.subjects').eq(newCenterIndex).addClass('active')
   let $newCenter = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex)
   $newCenter.addClass('center')
-  if (newCenterIndex > 0 && newCenterIndex < 7) {
+  if (newCenterIndex > 0 && newCenterIndex < 8) {
     let $newNext = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex + 1)
     let $newLast = $('.carouselContainer').children('.topicDiv').eq(newCenterIndex - 1)
     $newNext.addClass('next').addClass('middleNext')
     $newLast.addClass('last').addClass('middleLast')
   } else if (newCenterIndex === 0) {
     let $newNext = $('.carouselContainer').children('.topicDiv').eq(1)
-    let $newLast = $('.carouselContainer').children('.topicDiv').eq(7)
+    let $newLast = $('.carouselContainer').children('.topicDiv').eq(8)
     $newNext.addClass('next')
     $newLast.addClass('last')
-  } else if (newCenterIndex === 7) {
+  } else if (newCenterIndex === 8) {
     let $newNext = $('.carouselContainer').children('.topicDiv').eq(0)
-    let $newLast = $('.carouselContainer').children('.topicDiv').eq(6)
+    let $newLast = $('.carouselContainer').children('.topicDiv').eq(7)
     $newNext.addClass('next')
     $newLast.addClass('last')
   }

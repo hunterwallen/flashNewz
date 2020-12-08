@@ -80,6 +80,9 @@ h2.satiricalDescription {
 #subjectNav li:hover {
   background-color: #BF920B;
 }
+#favoritesLink {
+  min-width: 100vw;
+}
 .subjects.active {
   background-color: #BF920B;
   color: white;
@@ -160,17 +163,48 @@ main {
   font-family: 'Playfair Display SC', serif;
 
 }
+.linksFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
 a.articleLink {
   text-decoration: none;
   font-family: 'Bebas Neue', cursive;
   background-color: lightgrey;
   color: grey;
-  align-self: center;
-  padding: 1em;
+  padding: .5em;
   border: 2px solid grey;
   border-radius: 10px;
 }
 a.articleLink:hover {
+  background-color: lightgrey;
+  color: black;
+}
+a.favLink {
+  text-decoration: none;
+  font-family: 'Bebas Neue', cursive;
+  background-color: lightgrey;
+  color: grey;
+  padding: .5em;
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+a.favLink:hover {
+  background-color: lightgrey;
+  color: black;
+}
+a.removeFav {
+  text-decoration: none;
+  font-family: 'Bebas Neue', cursive;
+  background-color: lightgrey;
+  color: grey;
+  padding: .5em;
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+a.removeFav:hover {
   background-color: lightgrey;
   color: black;
 }
@@ -259,13 +293,16 @@ footer p {
     flex-wrap: nowrap;
   }
   #subjectNav li {
-    width:15%;
+    width:11%;
     height: 5em;
     border-right: 1px solid #BF920B;
   }
   #subjectNav li:hover {
     background-color: #BF920B;
     cursor: pointer;
+  }
+  #favoritesLink {
+    min-width: 12%;
   }
   #lastTopic {
     display: block;
@@ -371,6 +408,22 @@ footer p {
     border-color: lightgrey;
   }
   a.articleLink:hover {
+    cursor: pointer;
+  }
+  a.favLink {
+    background-color: inherit;
+    color: grey;
+    border-color: lightgrey;
+  }
+  a.favLink:hover {
+    cursor: pointer;
+  }
+  a.removeFav {
+    background-color: inherit;
+    color: grey;
+    border-color: lightgrey;
+  }
+  a.removeFav:hover {
     cursor: pointer;
   }
   footer {
