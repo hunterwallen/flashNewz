@@ -76,7 +76,9 @@ const addToFavorites = (event) => {
     let $newLink = $('<a>').addClass('articleLink').attr('target', '_blank').text('FULL ARTICLE').attr('href', $thisLink)
     let $removeFav = $('<div>').addClass('removeFav').text('Remove from Favorites')
     let $linksFlex = $('<div>').addClass('linksFlex').append($newLink, $removeFav)
-    let $favArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle').text($thisTitle), $('<h4>').addClass('articleDescription').text($thisDescription), $linksFlex, $('<span>').addClass('thisTopicDivID').css('display', 'none').text($thisTopicDivID), $('<span>').addClass('thisIndex').css('display', 'none').text($thisIndex))
+    let $setTopic = $('<span>').addClass('thisTopicDivID').css('display', 'none').text($thisTopicDivID)
+    let $setIndex = $('<span>').addClass('thisIndex').css('display', 'none').text($thisIndex)
+    let $favArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle').text($thisTitle), $('<h4>').addClass('articleDescription').text($thisDescription), $linksFlex, $setTopic, $setIndex)
     let $favoritesContainer = $('#favoritesContainer')
     $favoritesContainer.append($favArticle)
     $(event.currentTarget).css('display', 'none')
@@ -93,7 +95,6 @@ const removeFavorite = (event) => {
   let $thisArticle = $(event.currentTarget).parent().parent()
   let $thisTopicDiv = $thisArticle.children('.thisTopicDivID').text()
   let $thisIndex = $thisArticle.children('.thisIndex').text()
-  console.log($thisIndex);
   let $oldArticle = $(`#${$thisTopicDiv}`).children('.articleContainer').children('.article').eq($thisIndex)
   $oldArticle.children('.linksFlex').children('.favLink').css('display', 'block')
   $thisArticle.remove()
@@ -101,6 +102,7 @@ const removeFavorite = (event) => {
     $('#favoritesMessage').css('display', 'block')
   }
 }
+
 //function to use next nextButton
 const nextBtn = () => {
   $('.active').removeClass('active')
