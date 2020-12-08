@@ -163,6 +163,13 @@ main {
   font-family: 'Playfair Display SC', serif;
 
 }
+#favoritesMessage {
+  align-self: center;
+  font-size: 1.5em;
+  padding: .5em;
+  font-family: 'Playfair Display SC', serif;
+  text-align: center;
+}
 .linksFlex {
   display: flex;
   flex-direction: row;
@@ -195,7 +202,7 @@ a.favLink:hover {
   background-color: lightgrey;
   color: black;
 }
-a.removeFav {
+div.removeFav {
   text-decoration: none;
   font-family: 'Bebas Neue', cursive;
   background-color: lightgrey;
@@ -204,7 +211,7 @@ a.removeFav {
   border: 2px solid grey;
   border-radius: 10px;
 }
-a.removeFav:hover {
+div.removeFav:hover {
   background-color: lightgrey;
   color: black;
 }
@@ -293,7 +300,7 @@ footer p {
     flex-wrap: nowrap;
   }
   #subjectNav li {
-    width:11%;
+    width: 11%;
     height: 5em;
     border-right: 1px solid #BF920B;
   }
@@ -418,12 +425,12 @@ footer p {
   a.favLink:hover {
     cursor: pointer;
   }
-  a.removeFav {
+  div.removeFav {
     background-color: inherit;
     color: grey;
     border-color: lightgrey;
   }
-  a.removeFav:hover {
+  div.removeFav:hover {
     cursor: pointer;
   }
   footer {

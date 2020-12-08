@@ -19,7 +19,7 @@ const apiCall = (num) => {
         let $thisArticle = $thisArticleContainer.children('.article').eq(x)
         $thisArticle.children('.articleTitle').text(data.results[x].title)
         $thisArticle.children('.articleDescription').text(data.results[x].abstract)
-        $thisArticle.children('.articleLink').attr('href', data.results[x].url)
+        $thisArticle.children('.linksFlex').children('.articleLink').attr('href', data.results[x].url)
       }
     },
     () => {
@@ -39,20 +39,10 @@ const makeTopicContentTags = () => {
       let $linksFlex = $('<div>').addClass('linksFlex').append($newLink, $favoritesAdd)
       let $newArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle'), $('<h4>').addClass('articleDescription'), $linksFlex)
       $thisTopicContainer.append($newArticle)
+      $($favoritesAdd).on('click', addToFavorites)
     }
     apiCall(i)
   }
-  let $favoritesDiv = $('#favorites')
-  let $thisFavoritesContainer = $('<div>').addClass('articleContainer')
-  $favoritesDiv.append($thisFavoritesContainer)
-  for(let x = 0; x < 10; x++) {
-    let $newLink = $('<a>').addClass('articleLink').attr('target', '_blank').text('FULL ARTICLE')
-    let $removeFav = $('<a>').addClass('removeFav').text('Remove from Favorites')
-    let $linksFlex = $('<div>').addClass('linksFlex').append($newLink, $removeFav)
-    let $newArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle'), $('<h4>').addClass('articleDescription'), $linksFlex)
-    $thisFavoritesContainer.append($newArticle)
-  }
-
   $('.subjects').on('click', topicSelect)
   $('#nextButton').on('click', nextBtn)
   $('#lastButton').on('click', lastBtn)
@@ -71,7 +61,46 @@ const makeTopicContentTags = () => {
   })
 }
 
-
+//function to add article to favorites
+const addToFavorites = (event) => {
+  $('#favoritesMessage').css('display', 'none')
+  let $favoritesLength = $('#favoritesContainer').children()
+  if($favoritesLength.length < 11) {
+    let $thisArticle = $(event.currentTarget).parent().parent()
+    let $thisArticleContainer = $thisArticle.parent()
+    let $thisTopicDivID = $thisArticle.parent().parent().attr('id')
+    let $thisIndex = $thisArticleContainer.children().index($thisArticle)
+    let $thisTitle = $thisArticle.children('h3').text()
+    let $thisDescription = $thisArticle.children('h4').text()
+    let $thisLink = $thisArticle.children('.linksFlex').children('.articleLink').attr('href')
+    let $newLink = $('<a>').addClass('articleLink').attr('target', '_blank').text('FULL ARTICLE').attr('href', $thisLink)
+    let $removeFav = $('<div>').addClass('removeFav').text('Remove from Favorites')
+    let $linksFlex = $('<div>').addClass('linksFlex').append($newLink, $removeFav)
+    let $favArticle = $('<div>').addClass('article').append($('<h3>').addClass('articleTitle').text($thisTitle), $('<h4>').addClass('articleDescription').text($thisDescription), $linksFlex, $('<span>').addClass('thisTopicDivID').css('display', 'none').text($thisTopicDivID), $('<span>').addClass('thisIndex').css('display', 'none').text($thisIndex))
+    let $favoritesContainer = $('#favoritesContainer')
+    $favoritesContainer.append($favArticle)
+    $(event.currentTarget).css('display', 'none')
+    $removeFav.on('click', (event) => {
+      removeFavorite(event)
+    })
+  } else {
+    alert('You can only add up to ten favorites. Please remove existing favorites before adding more.')
+  }
+}
+//function to remove favorites
+const removeFavorite = (event) => {
+  let $favContainerLength = $('#favoritesContainer').children().length
+  let $thisArticle = $(event.currentTarget).parent().parent()
+  let $thisTopicDiv = $thisArticle.children('.thisTopicDivID').text()
+  let $thisIndex = $thisArticle.children('.thisIndex').text()
+  console.log($thisIndex);
+  let $oldArticle = $(`#${$thisTopicDiv}`).children('.articleContainer').children('.article').eq($thisIndex)
+  $oldArticle.children('.linksFlex').children('.favLink').css('display', 'block')
+  $thisArticle.remove()
+  if($favContainerLength === 1) {
+    $('#favoritesMessage').css('display', 'block')
+  }
+}
 //function to use next nextButton
 const nextBtn = () => {
   $('.active').removeClass('active')
