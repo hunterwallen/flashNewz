@@ -5,8 +5,8 @@ let endX = 0;
 let startTouch = 0;
 let endTouch = 0
 // function to return ajax call for topic of index of topicDiv array
-//function to populate headlines to all topics inside h3 of at each articleContainer index
-// function to populate abstracts to all topic h4
+    //function to populate headlines to all topics inside h3 of at each articleContainer index
+      // function to populate abstracts to all topic h4
 const apiCall = (num) => {
   let thisTopic = topicDivs[num]
   $.ajax({
@@ -27,7 +27,8 @@ const apiCall = (num) => {
     }
   )
 }
-// function to create articleContainer div and 15 article divs each with a h3 h4 and a tag in each topicDiv
+// function to create articleContainer div and 15 article divs each with a h3 h4 and a tag in each topicDiv and then
+    // place a call back to populate divs with NYT API as well as place event listeners on appropriate tags
 const makeTopicContentTags = () => {
   for (let i = 0; i < 8; i++) {
     let $thisTopicDiv = $('.topicDiv').eq(i)
@@ -61,7 +62,8 @@ const makeTopicContentTags = () => {
   })
 }
 
-//function to add article to favorites
+//function to add article to favorites with identifying info to be able to reference original article location and to disable/hide
+      // add to favorites button on original article
 const addToFavorites = (event) => {
   $('#favoritesMessage').css('display', 'none')
   let $favoritesLength = $('#favoritesContainer').children()
@@ -89,7 +91,7 @@ const addToFavorites = (event) => {
     alert('You can only add up to ten favorites. Please remove existing favorites before adding more.')
   }
 }
-//function to remove favorites
+//function to remove favorites article and restore add to favorites button in original article location
 const removeFavorite = (event) => {
   let $favContainerLength = $('#favoritesContainer').children().length
   let $thisArticle = $(event.currentTarget).parent().parent()
@@ -103,14 +105,14 @@ const removeFavorite = (event) => {
   }
 }
 
-//function to use next nextButton
+//function to use next nextButton to center next div
 const nextBtn = () => {
   $('.active').removeClass('active')
   let $newCenter = $('.topicDiv').index($('.next'))
   $('.subjects').eq($newCenter).addClass('active')
   setDivClasses($newCenter)
 }
-//function to use last lastButton
+//function to use last lastButton to center last div
 const lastBtn = () => {
   $('.active').removeClass('active')
   let $newCenter = $('.topicDiv').index($('.last'))
@@ -122,7 +124,7 @@ const topicSelect = (event) => {
   let $clickedIndex = $('.subjects').index(event.currentTarget)
   setDivClasses($clickedIndex)
 }
-//function to set center next and last classes
+//function to set center next and last classes as well as highlight center div in nav bar
 const setDivClasses = (newCenterIndex) => {
   $('.active').removeClass('active')
   $('.center').removeClass('center')
@@ -150,7 +152,7 @@ const setDivClasses = (newCenterIndex) => {
     $newLast.addClass('last')
   }
 }
-//function to change background color of center div in nav bar
+
  //function to make headerToolTip appear on hover on desktop and follow mouse cursor
  const moveSatire = (event) => {
    let $toolTip = $('#headerToolTip')
@@ -182,13 +184,7 @@ const swipe = () => {
 
 $(() => {
 
-
 makeTopicContentTags()
-
-
-
-
-
 
 });
 
